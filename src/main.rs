@@ -38,16 +38,26 @@ fn main() {
     framebuffer.draw_polygon(&star);
     
 
-    let vertices = vec![
+    let square = vec![
         Vec3::new(321.0, 335.0, 0.0),
         Vec3::new(288.0, 286.0, 0.0),
         Vec3::new(339.0, 251.0, 0.0),
         Vec3::new(374.0, 302.0, 0.0),
     ];
-    framebuffer.fill_polygon(&vertices, Color::new(0, 0, 255));
+    framebuffer.fill_polygon(&square, Color::new(0, 0, 255));
     // Set the current drawing color to black
     framebuffer.set_current_color_hex(0xFFFFFF);
-    framebuffer.draw_polygon(&vertices);
+    framebuffer.draw_polygon(&square);
+
+    let triangle = vec![
+        Vec3::new(377.0, 249.0, 0.0),
+        Vec3::new(411.0, 197.0, 0.0),
+        Vec3::new(436.0, 249.0, 0.0),
+    ];
+    framebuffer.fill_polygon(&triangle, Color::new(255, 0, 0));
+    // Set the current drawing color to black
+    framebuffer.set_current_color_hex(0xFFFFFF);
+    framebuffer.draw_polygon(&triangle);
 
     match framebuffer.render_buffer("./output.bmp") {
         Ok(_) => println!("Framebuffer rendered to output.bmp"),
